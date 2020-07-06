@@ -9,7 +9,7 @@ var refreshTime = 2;
 
 //Create Snoowrap requester with OAuth credentials
 const r = new snoowrap({
-  userAgent: 'MagicLaidlaw',
+  userAgent: 'Magic8Bot',
   clientId: auth.clientId,
   clientSecret: auth.clientSecret,
   refreshToken: auth.refreshToken
@@ -21,8 +21,8 @@ r.getUser(auth.targetOff).getComments().fetchAll().then(raw => officialComments 
 
 //gets comments and posts every 2 hours after startup
 setInterval(function(){
-  r.getUser("hepth-edph").getComments().fetchAll().then(raw => comments = raw );
-  r.getUser('Laidlaw-PHYS').getComments().fetchAll().then(raw => officialComments = raw );
+  r.getUser(auth.target).getComments().fetchAll().then(raw => comments = raw );
+  r.getUser(auth.targetOff).getComments().fetchAll().then(raw => officialComments = raw );
 }, refreshTime * 3600000);
 
 // Configure logger settings
